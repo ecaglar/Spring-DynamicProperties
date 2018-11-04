@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 
+import javax.annotation.PostConstruct;
+
 /**
  * This is the handler class which handles property management based on environment.
  * First it reads environment information from application.properties then based on it,
@@ -22,9 +24,18 @@ public class PropertyHandler {
     private final String PRODUCTION_ENV = "PRODUCTION";
     private final String DEVELOPMENT_ENV = "DEVELOPMENT";
 
-    private final String DEVELOPMENT_ENV_SUFFIX = ".dev";
-    private final String PRODUCTION_ENV_SUFFIX = ".prod";
+    private  String DEVELOPMENT_ENV_SUFFIX = null;
+    private  String PRODUCTION_ENV_SUFFIX =  null;
 
+    /**
+     * Since env variable is not ready during {@link PropertyHandler} instantination, we need to init it after construction.
+     */
+    @PostConstruct
+    public void init()
+    {
+        DEVELOPMENT_ENV_SUFFIX = env.getProperty("development.environment.suffix");
+        PRODUCTION_ENV_SUFFIX =  env.getProperty("production.environment.suffix");
+    }
     /**
      * Read relevant property value based on environment
      * If the environment is DEVELOPMENT then it tries to read property
