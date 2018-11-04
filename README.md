@@ -10,12 +10,12 @@ This can be handled using different approcahes.
 1- There might be different properties files for different needs and they can be manageed from a central application.properties file.
 
 application.properties
-    - env = dev
+     env = dev
     
 application-dev.properties
 application-prod.properties
 
-2- Spring boot also supports profile-spesific properties. You can simply set a profile ([default] as default) and let spring boot load property file with that profile. Basicly add property files and set profile, then let application load related profile.
+2- Spring boot also supports **profile-spesific properties**. You can simply set a profile ([default] as default) and let spring boot load property file with that profile. Basicly add property files and set profile, then let application load related profile.
 
 
 application-[profile].properties
@@ -52,7 +52,7 @@ or common for both,
 file.path = /my.common.path
 ```
 
-We dont need to care about registering our application.properties file with @PropertySource annotation as Spring Boot is automaticly take care of it. Whenever we like to read a property, we only need one line of code which is,
+We dont need to care about registering our application.properties file with  **@PropertySource** annotation as Spring Boot is automaticly take care of it. Whenever we like to read a property, we only need one line of code which is,
 
 ```
 PropertyUtil.getProperty("file.path");
