@@ -1,4 +1,5 @@
-# Spring-Dynamic-Properties
+# Spring-Dynamic-Properties 
+ ### with Spring Boot 2.1.0 and Spring 5.1.2 
 
 Handling property files in Spring applications might be cumbersome unless properly managed.
 In addition, if th eproject requires different properties for development and production environment
@@ -23,7 +24,7 @@ application-[profile].properties
 
 then application-local.properties will be used.
 
-## Another approach is resolve property name dynamicly based on profile
+## Another approach is to resolve property names dynamicly based on profile
 
 In this sample project, I have covered the basics of dynamic property handling depending on the profile (environment in my case)
 The purpose is to have only one configurtion file and different configuration values depending on profile.
